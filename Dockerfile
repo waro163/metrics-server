@@ -4,6 +4,7 @@ ARG ARCH
 FROM golang:1.16.8 as build
 
 WORKDIR /go/src/sigs.k8s.io/metrics-server
+ENV GOPROXY "https://goproxy.cn,direct"
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
