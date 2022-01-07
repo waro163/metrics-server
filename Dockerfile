@@ -18,7 +18,11 @@ ARG GIT_COMMIT
 ARG GIT_TAG
 RUN make metrics-server
 
-FROM gcr.io/distroless/static:latest-$ARCH
-COPY --from=build /go/src/sigs.k8s.io/metrics-server/metrics-server /
+COPY /go/src/sigs.k8s.io/metrics-server/metrics-server /
 USER 65534
 ENTRYPOINT ["/metrics-server"]
+
+# FROM gcr.io/distroless/static:latest-$ARCH
+# COPY --from=build /go/src/sigs.k8s.io/metrics-server/metrics-server /
+# USER 65534
+# ENTRYPOINT ["/metrics-server"]
